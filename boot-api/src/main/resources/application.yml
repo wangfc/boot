@@ -1,0 +1,53 @@
+system:
+  kaptchaOpen: true
+  swaggerOpen: true
+
+###################  beetl配置  ###################
+beetl:
+  delimiter-statement-start: \@   #开始结束标签(yaml不允许@开头)
+  delimiter-statement-end: null
+  resource-tagroot: common/tags   #自定义标签文件Root目录和后缀
+  resource-tagsuffix: tag
+  resource-auto-check: true #是否检测文件变化,开发用true合适，但线上要改为false
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/guns_base?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8
+    password: root
+    username: root
+  mvc:
+    static-path-pattern: /static/**
+    view:
+      prefix: /templates
+
+#  mvc:
+#    static-path-pattern: /static/**
+#    view:
+#      prefix: /WEB-INF/view
+#      suffix: .html
+
+
+#  thymeleaf:
+#    cache: false
+#    prefix: /view/
+#    suffix: .html
+#    encoding: utf-8
+
+
+
+
+logging:
+  level:
+    ROOT: info
+    ch.qos.logback: WARN
+    org.springframework: debug
+    org.apache.ibatis: debug
+    com.wfc: DEBUG
+  path: logs/
+  file: boot.log
+
+
+
+

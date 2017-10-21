@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wfc.boot.mapper.UserMapper">
+
+	<resultMap type="com.wfc.boot.entity.User" id="UserResult">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+
+		<association property="role" resultMap="com.wfc.boot.mapper.RoleMapper.roleResult" >
+			<id property="id" column="role_id" />
+		</association>
+	</resultMap>
+
+	<select id="selectUerRole" resultMap= "UserResult">
+		select a.*,b.id role_id , b.name from t_user a left join t_role b on a.id = b.id
+		where b.name = #{role.name} and a.id = #{id}
+	</select>
+
+</mapper>
